@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'faraday/retry'
+
 require_relative 'failover/middleware'
 require_relative 'failover/version'
 
@@ -15,13 +17,13 @@ module Faraday
       # * conn.use Faraday::Retry::Failover::Middleware
       # * conn.use :failover
       # Without this line, only the former method is valid.
-      Faraday::Middleware.register_middleware(failover: Faraday::Retry::Failover::Middleware)
+      # Faraday::Middleware.register_middleware(retry_with_failover: Faraday::Retry::Failover::Middleware)
 
       # Alternatively, you can register your middleware under Faraday::Request or Faraday::Response.
       # This will allow to load your middleware using the `request` or `response` methods respectively.
       #
       # Load middleware with conn.request :failover
-      # Faraday::Request.register_middleware(failover: Faraday::Retry::Failover::Middleware)
+      Faraday::Request.register_middleware(retry_with_failover: Faraday::Retry::Failover::Middleware)
       #
       # Load middleware with conn.response :failover
       # Faraday::Response.register_middleware(failover: Faraday::Retry::Failover::Middleware)

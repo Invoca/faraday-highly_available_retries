@@ -40,3 +40,6 @@ Packaging/RequireRelativeHardcodingLib:
   Exclude:
     - bin/**/*
     - spec/**/*
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
