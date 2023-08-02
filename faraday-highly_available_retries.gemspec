@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
   spec.license     = 'MIT'
   spec.homepage    = github_uri
   spec.metadata    = {
+    'allowed_push_host' => 'https://rubygems.org',
     'bug_tracker_uri' => "#{github_uri}/issues",
     'changelog_uri' => "#{github_uri}/blob/v#{spec.version}/CHANGELOG.md",
     'documentation_uri' => "http://www.rubydoc.info/gems/#{spec.name}/#{spec.version}",
