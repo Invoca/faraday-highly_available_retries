@@ -66,10 +66,10 @@ module Faraday
         env[FAILOVER_ORIGINAL_HOST_ENV_KEY] = env[:url].hostname
         env[FAILOVER_ORIGINAL_PORT_ENV_KEY] = env[:url].port
         env[FAILOVER_COUNTER_ENV_KEY]       = 0
-        env[FAILOVER_ENDPOINTS_ENV_KEY]     = resolv_endpoints(env)
+        env[FAILOVER_ENDPOINTS_ENV_KEY]     = resolve_endpoints(env)
       end
 
-      def resolv_endpoints(env)
+      def resolve_endpoints(env)
         host_list = if env[FAILOVER_ORIGINAL_HOST_ENV_KEY]
                       [[env[FAILOVER_ORIGINAL_HOST_ENV_KEY], env[FAILOVER_ORIGINAL_PORT_ENV_KEY]]] + @options.hosts(refresh: true)
                     else
