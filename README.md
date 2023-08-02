@@ -4,6 +4,17 @@
 
 An extension for the Faraday::Retry middleware allowing retries to failover across multiple resolved endpoints.
 
+## Why should I use this gem?
+
+At the time a request is made, the list of hosts pulled from the connection and request is resolved to an array of IP addresses.
+This list of IP addresses is then shuffled, and if a request fails to connect to the first IP address, it will try the next one.
+And so on and so forth, until the retries are exhausted. If all of the IPs fail, then we cycle back to the first one and try again.
+
+The reason this is impactful and should be used in conjunction with the retry middleware is that the retry middleware will
+leave DNS resolution to the OS, which has the potential of caching results and not try resolving to a different IP address.
+This means that if a DNS entry resolves to three IPs, `[A, B, C]`, the retry middleware may try all three retries against
+`A`, where as this middleware guarantees that it will try `A`, `B`, and `C`.
+
 ## Installation
 
 Add this line to your application's Gemfile:
