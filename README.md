@@ -37,7 +37,7 @@ gem install faraday-highly_available_retries
 
 ## Usage
 
-This extension can be used on it's own but is ultimately meant to be used in tandem with the [Faraday::Retry](https://github.com/lostisland/faraday-retry) middleware.
+This extension can be used on its own but is ultimately meant to be used in tandem with the [Faraday::Retry](https://github.com/lostisland/faraday-retry) middleware.
 You should make sure that this middleware is added in the request stack ***after*** the retry middleware to ensure
 it can alter the environment on retries.
 
@@ -53,7 +53,7 @@ the failover endpoints using DNS resolution.
 require 'faraday/retry/failover'
 
 conn = Faraday.new do |f|
-  f.request :retry, { max: 2 }
+  f.request :retry, { max: 2 } # This makes sure we retry 2, resulting in 3 attempts total before failing finally
   f.request :highly_available_retries
 end
 
