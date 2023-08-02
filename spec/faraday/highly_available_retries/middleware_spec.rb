@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Faraday::Retry::Failover::Middleware do
+RSpec.describe Faraday::HighlyAvailableRetries::Middleware do
   describe '#on_request' do
     subject(:on_request) { middleware.on_request(env) }
 
@@ -12,12 +12,12 @@ RSpec.describe Faraday::Retry::Failover::Middleware do
     let(:url)             { URI('http://google.com') }
 
     before do
-      allow(Faraday::Retry::Failover::Endpoint).to(
+      allow(Faraday::HighlyAvailableRetries::Endpoint).to(
         receive(:from_host_and_port)
           .with('google.com', 80)
           .and_return([
-                        Faraday::Retry::Failover::Endpoint.new('127.0.0.1', 80, hostname: 'google.com'),
-                        Faraday::Retry::Failover::Endpoint.new('127.0.0.2', 80, hostname: 'google.co.uk'),
+                        Faraday::HighlyAvailableRetries::Endpoint.new('127.0.0.1', 80, hostname: 'google.com'),
+                        Faraday::HighlyAvailableRetries::Endpoint.new('127.0.0.2', 80, hostname: 'google.co.uk'),
                       ])
       )
     end

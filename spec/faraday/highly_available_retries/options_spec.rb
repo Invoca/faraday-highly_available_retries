@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Faraday::Retry::Failover::Options do
+RSpec.describe Faraday::HighlyAvailableRetries::Options do
   let(:arguments) { {} }
   let(:options)   { described_class.from(arguments) }
 

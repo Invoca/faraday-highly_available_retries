@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Faraday::Retry::Failover::IpValidator do
+RSpec.describe Faraday::HighlyAvailableRetries::IpValidator do
   describe '.ip_addr?' do
     subject { described_class.ip_addr?(address) }
 

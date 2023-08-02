@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Faraday::Retry::Failover::Endpoint do
+RSpec.describe Faraday::HighlyAvailableRetries::Endpoint do
   describe '.from_host_and_port' do
     subject(:endpoints) { described_class.from_host_and_port(host, port) }
 

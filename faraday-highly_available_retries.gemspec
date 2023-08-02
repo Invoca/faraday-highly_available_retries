@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative 'lib/faraday/retry/failover/version'
+require_relative 'lib/faraday/highly_available_retries/version'
 
 Gem::Specification.new do |spec|
-  spec.name    = 'faraday-retry-failover'
-  spec.version = Faraday::Retry::Failover::VERSION
+  spec.name    = 'faraday-highly_available_retries'
+  spec.version = Faraday::HighlyAvailableRetries::VERSION
   spec.authors = ['Invoca Development', 'James Ebentier']
   spec.email   = ['development@invoca.com', 'jebentier@invoca.com']
 
@@ -31,6 +31,5 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 2.7', '< 4'
 
-  spec.add_dependency 'faraday',       '~> 2.0'
-  spec.add_dependency 'faraday-retry', '~> 2.0'
+  spec.add_dependency 'faraday', '~> 2.0'
 end

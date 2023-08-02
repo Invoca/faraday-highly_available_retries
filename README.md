@@ -1,6 +1,6 @@
-# Faraday Retry Failover
+# Faraday Highly Available Retries
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/invoca/faraday-retry-failover/ci)](https://github.com/invoca/faraday-retry-failover/actions?query=branch%3Amain)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/invoca/faraday-highly_available_retries/ci)](https://github.com/invoca/faraday-highly_available_retries/actions?query=branch%3Amain)
 
 An extension for the Faraday::Retry middleware allowing retries to failover across multiple resolved endpoints.
 
@@ -9,7 +9,7 @@ An extension for the Faraday::Retry middleware allowing retries to failover acro
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'faraday-retry-failover'
+gem 'faraday-highly_available_retries'
 ```
 
 And then execute:
@@ -21,7 +21,7 @@ bundle install
 Or install it yourself as:
 
 ```shell
-gem install faraday-retry-failover
+gem install faraday-highly_available_retries
 ```
 
 ## Usage
@@ -43,7 +43,7 @@ require 'faraday/retry/failover'
 
 conn = Faraday.new do |f|
   f.request :retry, { max: 2 }
-  f.request :retry_with_failover
+  f.request :highly_available_retries
 end
 
 conn.get('https://api.invoca.net/api/2020-10-01/transaction/33.json')
@@ -59,7 +59,7 @@ require 'faraday/retry/failover'
 
 conn = Faraday.new('https://api.invoca.net') do |f|
   f.request :retry, { max: 2 }
-  f.request :retry_with_failover
+  f.request :highly_available_retries
 end
 
 conn.get('/api/2020-10-01/transaction/33.json')
@@ -73,7 +73,7 @@ use for failover. The hosts list provided can contain hostnames and IPs both wit
 ```ruby
 conn = Faraday.new do |f|
   f.request :retry, { max: 2 }
-  f.request :retry_with_failover, { hosts: ['api.invoca.net', 'api.invoca.com'] }
+  f.request :highly_available_retries, { hosts: ['api.invoca.net', 'api.invoca.com'] }
 end
 
 conn.get('/api/2020-10-01/transaction/33.json')
@@ -92,7 +92,7 @@ See how it works [here](https://bundler.io/guides/creating_gem.html#releasing-th
 
 ## Contributing
 
-Bug reports and pull requests are welcome on [GitHub](https://github.com/invoca/faraday-retry-failover).
+Bug reports and pull requests are welcome on [GitHub](https://github.com/invoca/faraday-highly_available_retries).
 
 ## License
 
