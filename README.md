@@ -11,9 +11,22 @@ This list of IP addresses is then shuffled, and if a request fails to connect to
 And so on and so forth, until the retries are exhausted. If all of the IPs fail, then we cycle back to the first one and try again.
 
 The reason this is impactful and should be used in conjunction with the retry middleware is that the retry middleware will
-leave DNS resolution to the OS, which has the potential of caching results and not try resolving to a different IP address.
-This means that if a DNS entry resolves to three IPs, `[A, B, C]`, the retry middleware may try all three retries against
-`A`, where as this middleware guarantees that it will try `A`, `B`, and `C`.
+leave DNS resolution to the OS, which has the potential of two pitfalls:
+
+1. Caching results and not try resolving to a different IP address.
+2. Leaving resolution to a roll of the dice allowing the same IP to be tried multiple times.
+
+The issue with the first pitfall is rather obvious, but the second is a bit more subtle. If you have a DNS entry that resolves
+to 2 IP addresses `[A, B]` and 1 attempt, the OS resolution will result in one of the following list of attempts:
+
+1. `[A, A]`
+2. `[A, B]`
+3. `[B. B]`
+4. `[B, A]`
+
+This gives you a 50% chance of hitting the same IP twice, and a 50% chance of hitting the other IP twice, meaning the retry
+has no effect. By using this gem, you can ensure that the list of IPs is resolved ahead of time and cycled through to ensure
+a different IP is tried on each attempt.
 
 ## Installation
 
