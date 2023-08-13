@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'faraday'
-require_relative '../lib/faraday/retry/failover'
+require_relative '../lib/faraday/highly_available_retries'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
