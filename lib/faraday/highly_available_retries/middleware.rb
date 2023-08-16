@@ -73,7 +73,7 @@ module Faraday
         host_list = if env[FAILOVER_ORIGINAL_HOST_ENV_KEY]
                       [[env[FAILOVER_ORIGINAL_HOST_ENV_KEY], env[FAILOVER_ORIGINAL_PORT_ENV_KEY]]] + @options.hosts(refresh: true)
                     else
-                      @options.hosts
+                      @options.hosts(refresh: true)
                     end
 
         host_list.map { |host, port| Endpoint.from_host_and_port(host, port) }.flatten
