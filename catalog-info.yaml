@@ -20,6 +20,7 @@ metadata:
   tags:
   - ruby
   - gem
+  - public
   annotations:
     buildkite.com/project-slug: invoca/faraday-highly-available-retries
     github.com/project-slug: invoca/faraday-highly_available_retries
