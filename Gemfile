@@ -4,6 +4,9 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem 'appraisal'
+gem 'appraisal-matrix'
+
 gem 'base64'
 gem 'byebug'
 gem 'pry-byebug'
