@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "simplecov_helper"
+
 require 'faraday'
 require_relative '../lib/faraday/highly_available_retries'
 

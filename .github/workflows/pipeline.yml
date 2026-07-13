@@ -17,3 +17,4 @@ jobs:
         run: bundle exec rubocop
   tests:
     uses: Invoca/ruby-test-matrix-workflow/.github/workflows/ruby-test-matrix.yml@main
+    secrets: inherit
